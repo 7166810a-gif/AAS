@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: aas-ivr-ai
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: YEMOT_TOKEN
+        sync: false
+      - key: ACCESS_KEY
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: OPENAI_CHAT_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_TRANSCRIBE_MODEL
+        value: gpt-4o-mini-transcribe
+      - key: YEMOT_API_BASE
+        value: https://www.call2all.co.il/ym/api
