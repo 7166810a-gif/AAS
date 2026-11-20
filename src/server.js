@@ -5,7 +5,7 @@ require('dotenv').config();
 const crypto = require('node:crypto');
 const express = require('express');
 const OpenAI = require('openai');
-const { toFile } = require('openai/uploads');
+const { toFile } = require('openai');
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
@@ -110,12 +110,12 @@ function saveSession(sessionId, messages) {
 function requireIvrAccess(req, res, next) {
   const expected = process.env.ACCESS_KEY;
   if (!expected) {
-    return res.status(503).type('text/plain').send(buildIvrResponse('השירות אינו מוגדר עדיין. נא לפנות למנהל המערכת.'));
+    return res.status(200).type('text/plain').send(buildIvrResponse('השירות אינו מוגדר עדיין. נא לפנות למנהל המערכת.'));
   }
   const data = getRequestData(req);
   const supplied = String(data.key || req.get('x-access-key') || '');
   if (!timingSafeEqualText(supplied, expected)) {
-    return res.status(401).type('text/plain').send(buildIvrResponse('הגישה לשירות נדחתה.'));
+    return res.status(200).type('text/plain').send(buildIvrResponse('הגישה לשירות נדחתה.'));
   }
   next();
 }
