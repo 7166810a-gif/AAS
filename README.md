@@ -26,7 +26,7 @@
 
 ## חיבור שלוחת IVR2
 
-קובץ docs/IVR2-SETUP.ini מכיל דוגמת הגדרות. החלף את YOUR_ACCESS_KEY במפתח ACCESS_KEY שהגדרת ב-Render, ואת נתיב ההקלטות לפי השלוחה שלך.
+קובץ docs/IVR2-SETUP.ini מכיל דוגמת הגדרות שמכוונת לכתובת Render שסיפקת: https://zygy-voice-ai-zoo8.onrender.com/run_transcription. החלף את YOUR_ACCESS_KEY במפתח ACCESS_KEY שהגדרת ב-Render, ואת נתיב ההקלטות לפי השלוחה שלך.
 
 כדי לשמור הקשר בין שאלות באותה שיחה, הפעל api_call_id_send=yes. השרת מקבל מזהי שיחה בכמה שמות פרמטרים נפוצים. אם המערכת שלך שולחת מזהה בשם אחר, יש להוסיף אותו ל-sessionIdFromParams ב-src/server.js.
 
@@ -42,7 +42,7 @@
 
 ## פיתוח ובדיקות
 
-גרסת Node הנדרשת: 20 ומעלה.
+גרסת Node הנדרשת: 22 ומעלה.
 
 פקודות:
 - npm install
